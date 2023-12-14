@@ -14,4 +14,9 @@ class DonationAddress
   end
   # delivery_addressモデルのバリデーション
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+
+  def save
+    order = Order.create(item_id: item_id, user_id: user_id)
+    DeliveryAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, block: block, building_name: building_name, phone_number: phone_number, order_id: order.id )
+  end
 end
