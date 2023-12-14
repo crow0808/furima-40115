@@ -11,6 +11,8 @@ class OrderAddress
     # orderモデルのバリデーション
     validates :item_id
     validates :user_id
+    # トークンのバリデーション
+    validates :token
   end
   # delivery_addressモデルのバリデーション
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
